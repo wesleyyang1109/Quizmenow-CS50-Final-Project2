@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Searched
+{% endblock %}
+
+{% block main %}
+<style>
+    .tablehead {
+        background-color: rgb(89, 31, 182);
+        background-image: linear-gradient(to right, rgb(89, 31, 182), rgb(182, 12, 182));
+    }
+    th {
+        color:rgb(255, 255, 255)
+    }
+    .title {
+        font-family: 'Squada One'; font-size: 100px;
+    }
+    
+</style>
+<div class="jumbotron jumbotron-fluid float-container shadow-lg" style="background-color:#eacef6;">
+    <div class="container" style="text-align: center;">
+        <h1 class="display-3 title">Select Quiz</h1>
+        <p class="lead headbar">
+            Click on the button of the quiz that you want to take.
+      </p>
+    </div>
+  </div>
+<form action="/quizmenow" method="GET" class="content">
+    <div class="container p-5">
+        <h2>Showing results for "{{ search }}"</h2>
+        <br>
+        <table class="table table-hover">
+            <thead class="tablehead">
+                <tr>
+                    <th class="text">Quiz Name</th>
+                    <th class="text">Username</th>
+                    <th class="text">Date and Time</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for row in rows %}
+                <tr><td class="text">{{ row.quiz_name }}</td><td class="text">{{ row.username }}</td><td class="text">{{ row.datetime }}</td><td><button onclick="myFunction({{ row.quiz_id }})" class="btn-grad" type="submit" name="{{ row.quiz_name }}">Quizmenow</button></td></tr>
+            {% endfor %}
+            </tbody>  
+            <input type="hidden" id="quizid" name="quizid">
+        </table>
+        <script>
+            function myFunction(id) {
+                document.getElementById("quizid").value = id;
+            }
+        </script>
+    </div>
+</form>
+{% endblock %}

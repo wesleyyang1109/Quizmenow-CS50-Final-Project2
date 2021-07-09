@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block main %}
+
+<style>
+    .correct {
+        background-color:#c5ffba;
+        border-radius: 25px;
+        padding: 20px;
+    }
+    .wrong {
+        background-color:#ffb7b7;
+        border-radius: 25px;
+        padding: 20px;
+    }
+    .title {
+        font-family: 'Squada One'; font-size: 100px;
+    }
+    
+</style>
+<div class="jumbotron jumbotron-fluid float-container shadow-lg" style="background-color:#eacef6;">
+    <div class="container" style="text-align: center;">
+        <h1 class="display-3 title">Results</h1>
+    </div>
+  </div>
+<div class="container p-5 text">
+    <h2>{{ quiz_name }}</h2><br>
+    {% for row in rows %}
+        <div class="container whitebox {% if row.correctmarker == 1 %}correct{% else %}wrong{% endif %} shadow-lg">
+            
+            {% if row.correctmarker == 1 %}
+                <p>✔️ Well Done!</p>
+            {% else %}
+                <p>❌ correct answer is {{ row.correct }}</p>
+            {% endif %}
+
+            <p>Q{{ loop.index }}. {{ row.question }}</p><br>
+            <p><input type="radio" name="q{{ loop.index }}" disabled {% if row.chosen == "A" %}checked="checked"{% endif %}> A. {{ row.answer_a }}</p><br>
+            <p><input type="radio" name="q{{ loop.index }}" disabled {% if row.chosen == "B" %}checked="checked"{% endif %}> B. {{ row.answer_b }}</p><br>
+            <p><input type="radio" name="q{{ loop.index }}" disabled {% if row.chosen == "C" %}checked="checked"{% endif %}> C. {{ row.answer_c }}</p><br>
+            <p><input type="radio" name="q{{ loop.index }}" disabled {% if row.chosen == "D" %}checked="checked"{% endif %}> D. {{ row.answer_d }}</p>
+            <input type="hidden" name="correct" value="{{ row.correct }}">
+        </div>
+        <br>
+        <br>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

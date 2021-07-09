@@ -1,0 +1,174 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Editor-Create
+{% endblock %}
+
+{% block main %}
+    <div class="jumbotron jumbotron-fluid float-container shadow-lg" style="background-color:#eacef6;">
+        <div class="container" style="text-align: center;">
+            <h1 class="display-3 title">Create Your Quiz</h1>
+            <p class="lead headbar">
+                To add a new set of question, click the add button. To set the correct answer for question, click the radio button. After you're done, click the done button. (Blanks are not allowed)
+            </p>
+        </div>
+    </div>
+    <form action="/create" method="POST">
+        <style>
+            .box {
+                background-color:#eacef6;
+                border-radius: 25px;
+                padding: 20px;
+            }
+            .button {
+                position: fixed;
+
+            }
+            .thicc {
+                font-weight: 400;
+            }
+            #footer {
+            position: fixed;
+            padding: 10px 10px 10px 10px;
+            bottom: 0;
+            width: 100%;
+            /* Height of the footer*/ 
+            height: 80px;    
+            }
+            .title {
+                font-family: 'Squada One';font-size: 100px;
+            }
+            
+            .center {
+                margin: 0;
+                position: absolute;
+                left: 50%;
+                -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -20%);
+            }
+
+            #outer
+            {
+                width:100%;
+                text-align: center;
+            }
+            .inner
+            {
+                display: inline-block;
+            }
+            
+            .input
+            {
+                border-radius: 13px;
+                
+            }
+        </style>
+
+        <div class="container p-3 text" id="mainbox">
+            
+            <input type="hidden" id="total" name="total"><br><br>
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control input form-control-lg" name="quiz_name" placeholder="Quiz name" type="text">
+            </div><br>
+            <div class="container whitebox box shadow-lg">
+                Q1. <p><input class="form-control input form-control-lg" name="question_name1" placeholder="Question name" type="text"></p>
+                <input type="radio" name="q1" value="A" checked="checked"> A <input name="Q1A" class="form-control input form-control-lg" placeholder="Answer A" type="text">
+                <input type="radio" name="q1" value="B"> B <input name="Q1B" class="form-control input form-control-lg" placeholder="Answer B" type="text">
+                <input type="radio" name="q1" value="C"> C <input name="Q1C" class="form-control input form-control-lg" placeholder="Answer C" type="text">
+                <input type="radio" name="q1" value="D"> D <input name="Q1D" class="form-control input form-control-lg" placeholder="Answer D" type="text"><br>
+            </div><br><br>
+            
+
+            <script>
+                let count = 1;
+                function add() {
+                    count++;
+                    var mainbox = document.getElementById("mainbox");
+                    var node = document.createElement("DIV");
+                    mainbox.appendChild(node).setAttribute("class", "container whitebox box shadow-lg");
+
+                    var questionbox = document.createElement("P");
+
+                    var questionnode = document.createElement("INPUT");
+                    questionnode.className = "form-control input form-control-lg";
+                    questionnode.setAttribute("placeholder", "Question name");
+                    questionnode.setAttribute("name", "question_name"+count+"");
+
+                    var Aradio = document.createElement("INPUT");
+                    Aradio.setAttribute("name", "q"+count+"");
+                    Aradio.setAttribute("value", "A");
+                    Aradio.setAttribute("checked", "checked");
+                    var Anode = document.createElement("INPUT");
+                    Anode.className = "form-control input form-control-lg";
+                    Anode.setAttribute("placeholder", "Answer A");
+                    Anode.setAttribute("name", "Q"+count+"A");
+
+                    var Bradio = document.createElement("INPUT");
+                    Bradio.setAttribute("name", "q"+count+"");
+                    Bradio.setAttribute("value", "B");
+                    var Bnode = document.createElement("INPUT");
+                    Bnode.className = "form-control input form-control-lg";
+                    Bnode.setAttribute("placeholder", "Answer B");
+                    Bnode.setAttribute("name", "Q"+count+"B");
+
+                    var Cradio = document.createElement("INPUT");
+                    Cradio.setAttribute("name", "q"+count+"");
+                    Cradio.setAttribute("value", "C");
+                    var Cnode = document.createElement("INPUT");
+                    Cnode.className = "form-control input form-control-lg";
+                    Cnode.setAttribute("placeholder", "Answer C");
+                    Cnode.setAttribute("name", "Q"+count+"C");
+
+                    var Dradio = document.createElement("INPUT");
+                    Dradio.setAttribute("name", "q"+count+"");
+                    Dradio.setAttribute("value", "D");
+                    var Dnode = document.createElement("INPUT");
+                    Dnode.className = "form-control input form-control-lg";
+                    Dnode.setAttribute("placeholder", "Answer D");
+                    Dnode.setAttribute("name", "Q"+count+"D");
+                    
+                    var linebreak = document.createElement("BR");
+                    var Q = document.createTextNode("Q"+count+". ");
+                    var A = document.createTextNode("A ");
+                    var B = document.createTextNode("B ");
+                    var C = document.createTextNode("C ");
+                    var D = document.createTextNode("D ");
+                    node.appendChild(Q);
+                    node.appendChild(questionbox)
+
+                    questionbox.appendChild(questionnode).setAttribute("type", "text");
+
+                    node.appendChild(linebreak);
+                    node.appendChild(Aradio).setAttribute("type", "radio");
+                    node.appendChild(A);
+                    node.appendChild(Anode).setAttribute("type", "text");
+                    node.appendChild(Bradio).setAttribute("type", "radio");
+                    node.appendChild(B);
+                    node.appendChild(Bnode).setAttribute("type", "text");
+                    node.appendChild(linebreak);
+                    node.appendChild(Cradio).setAttribute("type", "radio");
+                    node.appendChild(C);
+                    node.appendChild(Cnode).setAttribute("type", "text");
+                    node.appendChild(Dradio).setAttribute("type", "radio");
+                    node.appendChild(D);
+                    node.appendChild(Dnode).setAttribute("type", "text");
+                    
+                    node.appendChild(document.createElement("BR"));
+                    mainbox.appendChild(document.createElement("BR"));
+                    mainbox.appendChild(linebreak);
+
+                    document.getElementById("total").innerHTML = ""+count+"";
+                }
+                $('form').submit(function(){
+                    $('input#total').val(count);
+                });
+            </script>
+        </div>
+        
+
+        <div id="outer" class="text">
+            <div class="inner"><button class="btn-grad" type="button" onclick="add()">Add</button></div>
+            <div class="inner"><button class="btn-grad" type="submit">Done</button></div>
+        </div>
+        </form><br><br><br>
+{% endblock %}
