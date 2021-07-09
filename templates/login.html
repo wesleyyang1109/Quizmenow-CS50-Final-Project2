@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+<style>
+    .title {
+                font-family: 'Squada One';font-size: 100px;
+            }
+    
+    .input
+    {
+        border-radius: 13px;
+        
+    }
+
+    #outer
+    {
+        width:100%;
+        text-align: center;
+    }
+    .inner
+    {
+        display: inline-block;
+    }
+</style>
+<div class="jumbotron jumbotron-fluid float-container shadow-lg" style="background-color:#eacef6;">
+    <div class="container" style="text-align: center;">
+        <h1 class="display-3 title">Welcome to Quizmenow!</h1>
+        <p class="lead headbar">
+            Welcome to Quizmenow, a platform where you can create quizes and share it with others. If you're new, please click the register button on the top right corner. 
+        </p>
+    </div>
+</div><br><br><br><br><br><br>
+<div class="container p-5 text">
+    <form action="/login" method="post" style="text-align: center;">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control input form-control-lg" name="username" placeholder="Username" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control input form-control-lg" name="password" placeholder="Password" type="password">
+        </div>
+        <div id="outer" class="text">
+            <div class="inner"><button class="btn-grad" type="submit">Log In</button></div>
+        </div>
+    </form>
+</div><br><br><br><br><br><br><br><br><br>
+{% endblock %}

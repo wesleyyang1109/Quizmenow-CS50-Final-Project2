@@ -1,0 +1,116 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <style>
+        #float-container {
+            border: 3px solid #fff;
+            padding: 20px;
+        }
+
+        .float-child {
+            width: 50%;
+            float: left;
+            padding: 20px;
+        }
+        .centerimage {
+            display: block;
+            margin-left: auto;
+            margin-right: auto; 
+        }
+        .thicc {
+            font-weight: 400;
+        }
+        .title {
+            font-family: 'Squada One';font-size: 100px;
+        }
+        
+        .grey {
+            background-color: darkgrey;
+        }
+    </style>
+        <div class="jumbotron jumbotron-fluid float-container shadow-lg" style="background-color:#eacef6;">
+            <div class="container">
+                <div class="row align-items-lg-center">
+                    <div class="col-sm">
+                        <h1 class="display-3 title">Build Simple Quizes</h1>
+                        
+                        <p class="lead headbar">Wanna know how much your friend knows about you? Wanna know whether your student has paid attention in class?
+                            If only you could create a simple quiz... Guess what? You have come to the right place! Quizmenow is a platform where you can create quizzes and share it with others.
+                            Its simple design can allow you to finish your quiz in minutes. 
+                        </p>
+                        <ul style="padding: 0%;">
+                            <li><form action="/create" method="get">
+                                <div class="container p-2">
+                                    <button class="btn-grad" type="submit">Create a quiz</button>
+                                </div>
+                            </form></li>
+                            <li><form action="/search" method="get">
+                                <div class="container p-2">
+                                    <button class="btn-grad" type="submit">Find a quiz</button>
+                                </div>
+                            </form></li>
+                        </ul>
+                        
+                        
+                    </div>
+                    <div class="col-sm">
+                        <img class="centerimage" src="https://lh3.googleusercontent.com/0F0zxdGaFfxmiOnjs6kSs3o0FcFY0SIaElC6rGbCoBw_2Q5uj3hkyODdrbK2Ysio8LNhFdkoCiW4Jg0bbiYCJtLD0yAaLjXDG_r2xuK19DbaLpbb3CM8isR4SvHB0_6X9F17e4J2=w600-h315-p-k" />
+                    </div>
+                </div>
+                
+            </div>
+                      
+        </div><br><br><br>
+        <div class="container">
+            <div class="row align-items-lg-center" style="text-align: center;">
+                <div class="col-sm">
+                    <img class="centerimage" src="https://lh3.googleusercontent.com/Vnl2YCxcyTGuqWEROsRkMzNbZAOzqHrrqWmcYKk702qECwkx8icqIJ_9J9wM7pFKcpZs69R2Ai_kmr6EaXqq6NGYI0BGEh84wIUdJlr8s-CkL6PxBe-_wsFmweSUBxHOzwPp-iyR=w600-h315-p-k" />
+                </div>
+                <div class="col-sm">
+                    <p class="lead headbar">
+                        Finish your quiz in minutes.
+                    </p>
+                </div>
+            </div>
+        </div><br><br><br><br>
+        <div class="container">
+            <div class="row align-items-lg-center" style="text-align: center;">
+                <div class="col-sm">
+                    <img class="centerimage" src="https://lh3.googleusercontent.com/_YQRJ2u7FDKaR8mT0o3M-rX7m3DHle1SXsA-dHhUIq9ozCcf60HsCBPoZZnXlYZqfgTLFNcCFZRKAPTLEanGXaFTmc0dGk0r8_UkPV2G-u3_xvrSo8Elv9JvufiI74Pu-AMwYKB9=w600-h315-p-k" />
+                </div>
+                <div class="col-sm">
+                    <p class="lead headbar">
+                        Forgot something? Come back and edit.
+                    </p>
+                </div>
+            </div>
+        </div><br><br><br><br>
+        <div class="container">
+            <div class="row align-items-lg-center" style="text-align: center;">
+                <div class="col-sm">
+                    <img class="centerimage" src="https://lh3.googleusercontent.com/x3EgXVNBuMOGl2RHcaqFt-srFWgqBdqgbQe71bD22EHhAgimtWcCw9xS58VMh78zvTLkFzf1mhbBvPcYvl8G9D52m6llQtHppmkg7KgiACmiEy-yGXNpK46zXvVQE71Au5-mRuqH=w600-h315-p-k" />
+                </div>
+                <div class="col-sm">
+                    <p class="lead headbar">
+                        Find the quiz that you want to take.
+                    </p>
+                </div>
+            </div>
+        </div><br><br><br><br>
+        <div class="container">
+            <div class="row align-items-lg-center" style="text-align: center;">
+                <div class="col-sm">
+                    <img class="centerimage" src="https://lh3.googleusercontent.com/-lBvw00KPws8vO480pMqKqnl0eN9jOv3eBXXqBrxl5PWJitn4MAEezGRyPy5AEzfE6xZ9ueINFD_NG0aTqCVtO1ohttvH_UruOxFs1tOPODp5jb-NOGaS5P0vM__2MqEad68jbZ1=w600-h315-p-k" />
+                </div>
+                <div class="col-sm">
+                    <p class="lead headbar">
+                        Check the results after you're done.
+                    </p>
+                </div>
+            </div>
+        </div><br><br><br>
+{% endblock %}

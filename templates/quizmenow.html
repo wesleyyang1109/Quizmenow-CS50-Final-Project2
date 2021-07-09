@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quizmenow
+{% endblock %}
+
+{% block main %}
+<div class="jumbotron jumbotron-fluid float-container shadow-lg" style="background-color:#eacef6;">
+    <div class="container" style="text-align: center;">
+        <h1 class="display-3 title">Quizmenow</h1>
+        <p class="lead headbar">
+            Select the button that you think is the correct answer. After you're done, hit the submit button.
+        </p>
+    </div>
+  </div>
+<form action="/quizmenow" method="POST">
+    <style>
+        .box {
+            background-color:#eacef6;
+            border-radius: 25px;
+            padding: 20px;
+        }
+        .title {
+            font-family: 'Squada One'; font-size: 100px;
+        }
+        .text {
+            font-size: 25px;
+        }
+        #outer
+            {
+                width:100%;
+                text-align: center;
+            }
+            .inner
+            {
+                display: inline-block;
+            }
+    </style>
+    <div class="container p-5 centered text">
+        <h2>{{ quiz_name }}</h2><br>
+        {% for row in rows %}
+            <div class="container whitebox box shadow-lg">
+                
+                <p>Q{{ loop.index }}. {{ row.question }}</p><br>
+                <p><input type="radio" name="q{{ loop.index }}" value="A"> A. {{ row.answer_a }}</p><br>
+                <p><input type="radio" name="q{{ loop.index }}" value="B"> B. {{ row.answer_b }}</p><br>
+                <p><input type="radio" name="q{{ loop.index }}" value="C"> C. {{ row.answer_c }}</p><br>
+                <p><input type="radio" name="q{{ loop.index }}" value="D"> D. {{ row.answer_d }}</p>
+                <input type="hidden" name="correct" value="{{ row.correct }}">
+            </div>
+            <br>
+            <br>
+        {% endfor %}
+        <div id="outer" class="text">
+            <div class="inner"><button class="btn-grad" type="submit">Submit</button></div>
+        </div>
+        <input type="hidden" name="quiz_id" value="{{ quiz_id }}">
+    </div>
+    
+</form>
+{{ data }}
+
+{% endblock %}
